@@ -46,3 +46,16 @@ class TestFuncs(unittest.TestCase):
         data = get(BASE_URL).json()
 
         self.assertEqual(checkURL(data), True, msg)
+
+    def testGetData(self):
+        msg = "testing grabbing data from the api"
+
+        startDate = '2016-06-07'
+        endDate = '2016-06-14'
+        BASE_URL = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=' + startDate + '&end_date=' + endDate + '&api_key=DEMO_KEY'
+
+        data = get(BASE_URL).json()
+
+        self.assertEqual(getData(startDate, endDate), data)
+
+
